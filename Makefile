@@ -7,13 +7,13 @@ BASE_SRC_PREFIX := problem_
 
 src := 1
 
-CHOICED_PROBLEM := $(SRCS_DIR)/$(BASE_SRC_PREFIX)$(src).c
-OUTPUT := $(patsubst %.c,%,$(notdir $(CHOICED_PROBLEM)))
+CHOSEN_PROBLEM := $(SRCS_DIR)/$(BASE_SRC_PREFIX)$(src).c
+OUTPUT := $(patsubst %.c,%,$(notdir $(CHOSEN_PROBLEM)))
 
 all:
-	$(CC) $(CFLAGS) $(CHOICED_PROBLEM) -o $(OUTPUT)
+	$(CC) $(CFLAGS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
 	@./$(OUTPUT)
 	@rm $(OUTPUT)
 
 print:
-	@echo $(CHOICED_PROBLEM) $(OUTPUT)
+	@echo $(CHOSEN_PROBLEM) $(OUTPUT)
