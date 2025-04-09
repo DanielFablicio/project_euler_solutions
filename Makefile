@@ -29,3 +29,10 @@ compile:
 
 print:
 	@echo $(CHOSEN_PROBLEM) $(OUTPUT)"\n"$(src)
+
+#Needs the tool `hyperfine` (https://github.com/sharkdp/hyperfine).
+#Scheduled to remove the dependency later with a simpler and equally
+#accurate approach. [Waiting for laziness to pass].
+benchmk: compile
+	hyperfine -M 8 './$(OUTPUT)'
+	rm $(OUTPUT)
