@@ -20,10 +20,12 @@ src ?= $(lastword $(PROBLEMS_ID))
 CHOSEN_PROBLEM := $(SRCS_DIR)/$(BASE_SRC_PREFIX)$(src).c
 OUTPUT := $(patsubst %.c,%,$(notdir $(CHOSEN_PROBLEM)))
 
-all:
-	$(CC) $(CFLAGS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
+all: compile
 	@./$(OUTPUT)
 	@rm $(OUTPUT)
+
+compile:
+	$(CC) $(CFLAGS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
 
 print:
 	@echo $(CHOSEN_PROBLEM) $(OUTPUT)"\n"$(src)
