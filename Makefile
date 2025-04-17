@@ -34,5 +34,5 @@ print:
 #Scheduled to remove the dependency later with a simpler and equally
 #accurate approach. [Waiting for laziness to pass].
 benchmk: compile
-	hyperfine -M 8 './$(OUTPUT)'
+	hyperfine './$(OUTPUT)'
 	rm $(OUTPUT)
