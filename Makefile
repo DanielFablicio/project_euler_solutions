@@ -1,6 +1,8 @@
 CC := gcc
 CSTD := -std=c99
 CFLAGS := -Wall -Wextra -pedantic $(CSTD) -g
+#gf2 -> A GDB frontend for Linux.
+DEBUGGER := gf2
 
 SRCS_DIR := problems
 BASE_SRC_PREFIX := problem_
@@ -35,4 +37,8 @@ print:
 #accurate approach. [Waiting for laziness to pass].
 benchmk: compile
 	hyperfine './$(OUTPUT)'
+	rm $(OUTPUT)
+
+debug: compile
+	$(DEBUGGER) $(OUTPUT)
 	rm $(OUTPUT)
