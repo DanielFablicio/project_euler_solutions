@@ -12,7 +12,7 @@ BASE_SRC_PREFIX := problem_
 PROBLEMS = $(basename $(notdir $(wildcard $(SRCS_DIR)/*.c)))
 # Removes the 'problem_' prefix from file names, leaving only the
 # number(ID).
-PROBLEMS_ID = $(patsubst $(BASE_SRC_PREFIX)%,%,$(PROBLEMS))
+PROBLEMS_ID = $(shell printf '%s\n' $(patsubst $(BASE_SRC_PREFIX)%,%,$(PROBLEMS)) | sort -n)
 
 # Gets the ID of the latest problem and selects it as the default to
 # compile and run when using `make`, unless specified with
@@ -30,7 +30,7 @@ compile:
 	$(CC) $(CFLAGS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
 
 print:
-	@echo $(CHOSEN_PROBLEM) $(OUTPUT)"\n"$(src)
+	@echo $(CHOSEN_PROBLEM) $(OUTPUT) $(src)"\n" $(PROBLEMS_ID)
 
 # Needs the tool `hyperfine` (https://github.com/sharkdp/hyperfine).
 # Scheduled to remove the dependency later with a simpler and equally
