@@ -7,6 +7,8 @@ DEBUGGER := gf2
 SRCS_DIR := problems
 BASE_SRC_PREFIX := problem_
 
+MISC_SRCS = utils/utils.c
+
 # Get all the files in the `problems` directory and remove the
 # 'problems/' path and the '.c' extension.
 PROBLEMS = $(basename $(notdir $(wildcard $(SRCS_DIR)/*.c)))
@@ -27,7 +29,7 @@ all: compile
 	@rm $(OUTPUT)
 
 compile:
-	$(CC) $(CFLAGS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
+	$(CC) $(CFLAGS) $(MISC_SRCS) $(CHOSEN_PROBLEM) -o $(OUTPUT)
 
 print:
 	@echo $(CHOSEN_PROBLEM) $(OUTPUT) $(src)"\n" $(PROBLEMS_ID)
