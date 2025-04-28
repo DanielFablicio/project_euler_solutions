@@ -1,6 +1,7 @@
 CC := gcc
 CSTD := -std=c99
-CFLAGS := -Wall -Wextra -pedantic $(CSTD) -g
+OPT = -O1
+CFLAGS := -Wall -Wextra -pedantic $(CSTD) $(OPT) -g
 # gf2 -> A GDB frontend for Linux. (https://github.com/nakst/gf)
 DEBUGGER := gf2
 
